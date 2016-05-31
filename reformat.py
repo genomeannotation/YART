@@ -63,7 +63,13 @@ def main():
     lg = 0
 
     #argparse stuff
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser( 
+    epilog="""
+    Latest version at:\n
+    https://github.com/genomeannotation/YART
+    """,
+    formatter_class=argparse.RawDescriptionHelpFormatter
+    )
     parser.add_argument('--input_plink', '-pl', help = "Enter the" +\
                         " name of the file.", type = str, required=True)
     parser.add_argument('--input_LMmap', '-lm', help = "Enter the" +\
