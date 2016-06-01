@@ -2,9 +2,7 @@
 #run with 'python reformat.py -pl plink.map -lm .LMmap file > nameOfOutputFile
 
 import argparse
-import sys
 
-from operator import itemgetter
 from collections import defaultdict
 
 # buffer file into memory, enable search by line number
@@ -56,7 +54,6 @@ def doWork(lineNum, d, temp, lm, corrected, lg):
 def main():
     #declare the vars
     lm = []
-    plink = []
     d = defaultdict(list)
     corrected = []
     temp = range(10)
@@ -87,8 +84,8 @@ def main():
             lm = line.strip().split()
             if len(lm) > 0:
                 if str(lm[0]).startswith('#***'):
-                    if(lg<lm[3]):
-                        lg = lm[3]
+                    if(lg<float(lm[3])):
+                        lg = float(lm[3])
                 if not str(lm[0]).startswith('#'):
                     doWork(lm[0], d, temp, lm, corrected, lg)
             lm [:] = []
